@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FallingBlocks
+Comment=A Blocks app made for Ubuntu touch
+Exec=/usr/bin/qmlscene $@ /usr/share/fallingblocks/blocks.qml
+Icon=qmlscene
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+Name[nl]=fallingblocks.desktop
