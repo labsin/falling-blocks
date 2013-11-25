@@ -3,8 +3,8 @@ import QtQuick 2.0
 Grid {
     id: grid
     property alias model: reptr.model
-    property int imgWidth
-    property int imgheight
+    property real imgWidth
+    property real imgheight
     Repeater {
         id: reptr
         Image {
