@@ -25,7 +25,7 @@ Page {
             id: blockInfo
             anchors.top: parent.top
             anchors.left: parent.left
-
+            anchors.margins: blockSize/4
             width: blockSize * Helper.blockInfoColmun
         }
 
@@ -35,6 +35,9 @@ Page {
 
             anchors.top: blockInfo.bottom
             anchors.left: parent.left
+            anchors.right: gameContainer.left
+            anchors.margins: blockSize/4
+            anchors.topMargin: blockSize/2
         }
 
         Item {
@@ -79,8 +82,8 @@ Page {
                         rows: Helper.maxRow
                         columns: Helper.maxColumn
                         model: rows*columns
-                        imgWidth: values.blockSize
-                        imgheight: values.blockSize
+                        imgWidth: blockSize
+                        imgheight: blockSize
                     }
 
                     Keys.enabled: running

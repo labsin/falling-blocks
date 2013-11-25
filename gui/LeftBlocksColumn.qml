@@ -1,15 +1,16 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../logic/game.js" as Game
+import "blocksPageHelper.js" as Helper
 
 Item {
+    id: topItem
     signal init
 
     height: column.height + column.y
 
     UbuntuShape {
-        anchors.fill: column
-        anchors.margins: units.gu(1)
+        anchors.fill: parent
 
         color: UbuntuColors.coolGrey
         gradientColor: Qt.lighter(color,2)
@@ -38,8 +39,8 @@ Item {
 
         UbuntuShape {
             id: nextBlockBG
-            height: values.blockSize * 4 + units.gu(1)
-            width: values.blockSize * 4 + units.gu(1)
+            height: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
             color: UbuntuColors.warmGrey
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -77,8 +78,8 @@ Item {
 
         UbuntuShape {
             id: storedBlockBG
-            height: values.blockSize * 4 + units.gu(1)
-            width: values.blockSize * 4 + units.gu(1)
+            height: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
             color: UbuntuColors.warmGrey
 
             anchors.horizontalCenter: parent.horizontalCenter

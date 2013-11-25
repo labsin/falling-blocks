@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../logic/game.js" as Game
+import "blocksPageHelper.js" as Helper
 
 Item {
     signal init
@@ -8,7 +9,6 @@ Item {
 
     UbuntuShape {
         anchors.fill: column
-        anchors.margins: units.gu(1)
 
         color: UbuntuColors.coolGrey
         gradientColor: Qt.lighter(color,2)
@@ -32,6 +32,7 @@ Item {
             id: startButton
             text: "Start"
             anchors.horizontalCenter: parent.horizontalCenter
+            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
             onClicked: {
                 if(values.started) {
                     Game.gameOver()
@@ -52,6 +53,7 @@ Item {
             enabled: values.started
             text: "Pauze"
             anchors.horizontalCenter: parent.horizontalCenter
+            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
             onClicked: {
                 values.pauzed = !values.pauzed
             }
