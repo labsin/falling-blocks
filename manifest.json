@@ -1,0 +1,15 @@
+{
+    "architecture": "all",
+    "description": "Falling blocks is a game with blocks that are falling in a grid",
+    "framework": "ubuntu-sdk-13.10",
+    "hooks": {
+        "fallingBlocks": {
+            "apparmor": "fallingBlocks.json",
+            "desktop": "fallingBlocks.desktop"
+        }
+    },
+    "maintainer": "Sam Segers <sam.sgrs@gmail.com>",
+    "name": "com.ubuntu.developer.labsin",
+    "title": "Falling Blocks",
+    "version": "0.1"
+}
