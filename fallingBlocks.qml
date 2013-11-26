@@ -13,6 +13,8 @@ MainView {
 
     focus: true
 
+    applicationName: "com.ubuntu.developer.labsin.fallingblocks"
+
     QtValues {
         id: values
         onGameOverChanged: {
