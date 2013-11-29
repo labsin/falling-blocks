@@ -66,10 +66,10 @@ Page {
                     anchors.margins: units.gu(0.5)
                     color: Qt.lighter(gradientColor,1.45)
                     gradientColor: UbuntuColors.orange
-                    PauzeOverlay {
+                    PauseOverlay {
                         id: overlay
                         anchors.fill: parent
-                        visible: values.pauzed
+                        visible: values.paused
                     }
 
                     Mouse {

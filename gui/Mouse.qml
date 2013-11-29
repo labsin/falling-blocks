@@ -5,7 +5,7 @@ MouseArea {
     property int clickedX
     property int clickedY
     property variant clickedTime
-    property int blocksPerMsHardDrop: 10 * values.sencitivity
+    property int blocksPerMsHardDrop: 10 * values.sensitivity
 
     property int lastX
     property int lastY

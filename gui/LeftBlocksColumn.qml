@@ -53,9 +53,9 @@ Item {
                 gradientColor: UbuntuColors.orange
                 anchors.centerIn: parent
 
-                PauzeOverlay {
+                PauseOverlay {
                     anchors.fill: parent
-                    visible: values.pauzed
+                    visible: values.paused
                 }
             }
 
@@ -72,7 +72,7 @@ Item {
         Label {
             id: storeLabel
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Storred:"
+            text: "Stored:"
             color: "white"
         }
 
@@ -100,9 +100,9 @@ Item {
                     }
                 }
 
-                PauzeOverlay {
+                PauseOverlay {
                     anchors.fill: parent
-                    visible: values.pauzed
+                    visible: values.paused
                 }
 
                 GridOverlay {
@@ -129,7 +129,7 @@ Item {
                                                                    })
         Game.valuesObject.storedPiece = qmlObjComponent.createObject(
                     storedBlock, {
-                        isStorred: true
+                        isStored: true
                     })
         Game.valuesObject.currentPiece = qmlObjComponent.createObject(
                     gameCanvasPlain, {

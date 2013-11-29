@@ -49,18 +49,18 @@ Item {
         }
 
         Button {
-            id: pauzeButton
+            id: pauseButton
             enabled: values.started
-            text: "Pauze"
+            text: "Pause"
             anchors.horizontalCenter: parent.horizontalCenter
             width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
             onClicked: {
-                values.pauzed = !values.pauzed
+                values.paused = !values.paused
             }
             Binding {
-                target: pauzeButton
+                target: pauseButton
                 property: "text"
-                value: values.pauzed?"Resume":"Pauze"
+                value: values.paused?"Resume":"Pause"
             }
         }
 
