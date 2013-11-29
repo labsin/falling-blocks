@@ -8,7 +8,7 @@ UbuntuShape {
     z: 100
     Label {
         anchors.centerIn: parent
-        text: i18n.tr("Pauzed")
+        text: i18n.tr("Paused")
         color: "white"
         fontSize: "large"
     }

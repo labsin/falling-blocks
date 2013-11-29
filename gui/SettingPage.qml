@@ -26,10 +26,10 @@ Page {
             value: parseInt(startingLevel.text)?parseInt(startingLevel.text):1
         }
         ListItem.Caption {
-            text: i18n.tr("Drop sencitivity:")
+            text: i18n.tr("Drop sensitivity:")
         }
         Slider {
-            id: sencitivity
+            id: sensitivity
             width: parent.width
             live: false
             value: 5
@@ -38,8 +38,8 @@ Page {
         }
         Binding {
             target: values
-            property: "sencitivity"
-            value: sencitivity.value
+            property: "sensitivity"
+            value: sensitivity.value
         }
     }
 }

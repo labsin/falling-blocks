@@ -6,8 +6,8 @@ QtObject {
 
     property double blockSize
     property bool initiated: false
-    property bool running: !pauzed && started && !gameOver && !waiting
-    property bool pauzed: false
+    property bool running: !paused && started && !gameOver && !waiting
+    property bool paused: false
     property bool waiting: false
     property bool started: false
     property bool gameOver: false
@@ -18,7 +18,7 @@ QtObject {
     property int comboScore: 0
 
     property int startingLevel: 1
-    property int sencitivity: 5
+    property int sensitivity: 5
 
     property Item gameCanvas
 
@@ -37,9 +37,9 @@ QtObject {
         run(running)
     }
 
-    onPauzedChanged: {
-        print("QtValues::onPauzedChanged():"+pauzed)
-        if(pauzed) {
+    onPausedChanged: {
+        print("QtValues::onPausedChanged():"+paused)
+        if(paused) {
 
         }
     }
@@ -61,13 +61,13 @@ QtObject {
     onGameOverChanged: {
         print("QtValues::onGameOverChanged():"+gameOver)
         if(gameOver) {
-            pauzed = false;
+            paused = false;
             started = false;
         }
     }
 
     onInit: {
-        pauzed = false
+        paused = false
         waiting = false
         started = false
         gameOver = false

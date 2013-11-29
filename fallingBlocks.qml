@@ -50,7 +50,7 @@ MainView {
         }
         onCurrentPageChanged: {
             if(currentPage!=1 && values.running==true) {
-                values.pauzed = true;
+                values.paused = true;
             }
         }
     }
