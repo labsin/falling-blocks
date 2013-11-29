@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Sam Segers <sam.sgrs@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-29 20:10+0100\n"
+"PO-Revision-Date: 2013-11-29 20:34+0100\n"
+"Last-Translator: Sam Segers <sam.sgrs@gmail.com>\n"
+"Language-Team: Nederlands <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: gui/LeftBlocksColumn.qml:36
+msgid "Next block:"
+msgstr "Volgende:"
+
+#: gui/LeftBlocksColumn.qml:75
+msgid "Stored:"
+msgstr "Bewaard:"
+
+#: gui/BlocksPage.qml:167
+msgid "New Game"
+msgstr "Nieuw Spel"
+
+#: gui/HighscorePage.qml:9 fallingBlocks.qml:46
+msgid "Highscores"
+msgstr "Highscores"
+
+#: gui/PauseOverlay.qml:11
+msgid "Paused"
+msgstr "Gepauzeerd"
+
+#: gui/SettingPage.qml:11
+msgid "New game settings"
+msgstr "Nieuw spel instellingen"
+
+#: gui/SettingPage.qml:14
+msgid "Begin level:"
+msgstr "Begin level:"
+
+#: gui/SettingPage.qml:29
+msgid "Drop sensitivity:"
+msgstr "Val gevoeligheid:"
+
+#: fallingBlocks.qml:34 gui/GameOverDialog.qml:16
+msgid "Settings"
+msgstr "Instellingen"
+
+#: fallingBlocks.qml:40
+msgid "FallingBlocks"
+msgstr "VallendeBlokken"
+
+#: gui/GameOverDialog.qml:8
+msgid "Game Over"
+msgstr "Game Over"
+
+#: gui/GameOverDialog.qml:9
+msgid "You score is:"
+msgstr "Uw score is:"
+
+#: gui/GameOverDialog.qml:9
+msgid "What's next?"
+msgstr "Wat nu?"
+
+#: gui/GameOverDialog.qml:11
+msgid "nothing"
+msgstr "niets"
+
+#: gui/GameOverDialog.qml:23
+msgid "Restart"
+msgstr "Herstarten"
