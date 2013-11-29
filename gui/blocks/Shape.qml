@@ -12,7 +12,7 @@ Item {
     property bool sideKickRight: false
     property bool isCurrent: false
     property bool isNext: false
-    property bool isStorred: false
+    property bool isStored: false
     property int column: 0
     property int row: 0
     property int rotation: 0;
@@ -29,7 +29,7 @@ Item {
         if(Game.debug)
             print("Shape::onIsCurrentChanged():"+isCurrent)
         if(isCurrent) {
-            isStorred = false
+            isStored = false
             isNext = false
         }
     }
@@ -38,13 +38,13 @@ Item {
             print("Shape::onIsNextChanged():"+isNext)
         if(isNext) {
             isCurrent = false
-            isStorred = false
+            isStored = false
         }
     }
-    onIsStorredChanged: {
+    onIsStoredChanged: {
         if(Game.debug)
-            print("Shape::onIsStorredChanged():"+isStorred)
-        if(isStorred) {
+            print("Shape::onIsStoredChanged():"+isStored)
+        if(isStored) {
             isNext = false
             isCurrent = false
             reset()
@@ -78,11 +78,11 @@ Item {
         },
         State {
             name: "storred"
-            when: isStorred
+            when: isStored
             StateChangeScript {
                 script: {
                     if(Game.debug)
-                        print("Shape::StateChangeStorredBox")
+                        print("Shape::StateChangeStoredBox")
                     visible = true
                     goingDownTimer.stop()
                 }
@@ -104,7 +104,7 @@ Item {
         },
         State {
             name: "nothing"
-            when: !isCurrent && !isNext && !isStorred
+            when: !isCurrent && !isNext && !isStored
             StateChangeScript {
                 script: {
                     if(Game.debug)

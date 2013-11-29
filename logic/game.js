@@ -254,12 +254,12 @@ function startGame() {
 // Start up a new gamme
 function startNewGame() {
     print("Starting new game")
-    removeStorredPiece()
+    removeStoredPiece()
     initBoard()
     startGame()
 }
 
-function removeStorredPiece() {
+function removeStoredPiece() {
     valuesObject.storedPiece.shape = -1
 }
 
@@ -598,10 +598,10 @@ function storeCurrent() {
         print("storeCurrent()::storredAPiece:"+storredAPiece)
     if(storredAPiece)
         return;
-    var previousStorredShape = valuesObject.storedPiece.shape;
+    var previousStoredShape = valuesObject.storedPiece.shape;
     valuesObject.storedPiece.shape = blockStack.stackGet();
-    if(previousStorredShape !== -1) {
-        blockStack.stackAddInFront(previousStorredShape);
+    if(previousStoredShape !== -1) {
+        blockStack.stackAddInFront(previousStoredShape);
     }
     else {
         blockStack.addNewRandom();
