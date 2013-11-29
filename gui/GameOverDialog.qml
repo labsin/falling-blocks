@@ -5,22 +5,22 @@ import "../logic/game.js" as Game
 
 Dialog {
     id: dialogue
-    title: "Game Over"
-    text: "You score is: "+values.score+"\nWhat's next?"
+    title: i18n.tr("Game Over")
+    text: i18n.tr("You score is:")+" "+values.score+"\n"+i18n.tr("What's next?")
     Button {
-        text: "nothing"
+        text: i18n.tr("nothing")
         onClicked: PopupUtils.close(dialogue)
         gradient: UbuntuColors.greyGradient
     }
     Button {
-        text: "Settings"
+        text: i18n.tr("Settings")
         onClicked: {
             tabs.selectedTabIndex=0
             PopupUtils.close(dialogue)
         }
     }
     Button {
-        text: "Restart"
+        text: i18n.tr("Restart")
         onClicked: {
             Game.startNewGame()
             PopupUtils.close(dialogue)

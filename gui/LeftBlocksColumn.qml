@@ -33,7 +33,7 @@ Item {
         Label {
             id: nextLabel
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Next block:"
+            text: i18n.tr("Next block:")
             color: "white"
         }
 
@@ -72,7 +72,7 @@ Item {
         Label {
             id: storeLabel
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "Stored:"
+            text: i18n.tr("Stored:")
             color: "white"
         }
 

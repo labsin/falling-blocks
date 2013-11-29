@@ -164,7 +164,7 @@ Page {
 
     Action {
         id: actionNew
-        text: "New Game"
+        text: i18n.tr("New Game")
         onTriggered: Game.startNewGame()
     }
 
