@@ -60,7 +60,7 @@ MainView {
 
         gamePage.init()
 
-        Keys.forwardTo = Game.valuesObject.gameCanvas
+        Keys.forwardTo = values.gameCanvas
 
         Game.init();
     }
