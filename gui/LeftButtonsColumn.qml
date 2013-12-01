@@ -21,18 +21,18 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
 
-        spacing: units.gu(2)
+        spacing: Helper.spacing
 
         Item {
-            height: units.gu(1)
-            width: units.gu(1)
+            height: 0.01
+            width: 0.01
         }
 
         Button {
             id: startButton
             text: "Start"
             anchors.horizontalCenter: parent.horizontalCenter
-            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            width: values.blockSize * 4 + Helper.spacing
             onClicked: {
                 if(values.started) {
                     Game.gameOver()
@@ -53,7 +53,7 @@ Item {
             enabled: values.started
             text: "Pause"
             anchors.horizontalCenter: parent.horizontalCenter
-            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            width: values.blockSize * 4 + Helper.spacing
             onClicked: {
                 values.paused = !values.paused
             }
@@ -65,8 +65,8 @@ Item {
         }
 
         Item {
-            height: units.gu(1)
-            width: units.gu(1)
+            height: 0.01
+            width: 0.01
         }
     }
 }

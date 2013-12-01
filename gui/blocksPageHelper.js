@@ -3,18 +3,20 @@
 var maxColumn = 10
 // # rows is 20
 var maxRow = 20
-// # rows of the blockInfo
-var blockInfoColmun = 5
+var blockInfoColmun = 4
 
 var maxIndex = maxColumn * maxRow
 
 var down = new Array
 
+var border = units.gu(0.5)
+var spacing = units.gu(1)
+
 function calcBlockSize() {
     blocksPage.blockSize = Math.min(
-                (gameRow.width - gameContainer.anchors.margins * 2
-                 - gameCanvasPlain.anchors.margins * 2) / (maxColumn + blockInfoColmun),
-                (gameContainer.height - gameCanvasPlain.anchors.margins * 2) / maxRow)
+                (gameRow.width - spacing * 6
+                 - border * 4) / (maxColumn + blockInfoColmun),
+                (gameRow.height - spacing * 2 - border * 2) / maxRow)
     print(blockSize)
 }
 

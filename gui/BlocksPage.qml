@@ -25,8 +25,8 @@ Page {
             id: blockInfo
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.margins: blockSize/4
-            width: blockSize * Helper.blockInfoColmun
+            anchors.margins: Helper.spacing
+            width: blockSize * Helper.blockInfoColmun + 2 * Helper.spacing + 2 * Helper.border
         }
 
         LeftButtonsColumn {
@@ -35,9 +35,7 @@ Page {
 
             anchors.top: blockInfo.bottom
             anchors.left: parent.left
-            anchors.right: gameContainer.left
-            anchors.margins: blockSize/4
-            anchors.topMargin: blockSize/2
+            anchors.margins: Helper.spacing
         }
 
         Item {
@@ -46,24 +44,26 @@ Page {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.left: blockInfo.right
-            anchors.margins: units.gu(1)
+            anchors.margins: Helper.spacing
             Item {
                 id: gameCanvas
-                width: blockSize*Helper.maxColumn+gameCanvasPlain.anchors.margins*2
-                height: blockSize*Helper.maxRow+gameCanvasPlain.anchors.margins*2
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
+                width: blockSize*Helper.maxColumn+Helper.border*2
+                height: blockSize*Helper.maxRow+Helper.border*2
 
                 UbuntuShape {
                     id: gameCanvasBorder
-                    anchors.fill: parent
+                    anchors.fill: gameCanvasPlain
+                    anchors.margins: -Helper.border
                     color: UbuntuColors.warmGrey
                 }
                 UbuntuShape {
                     id: gameCanvasPlain
-                    anchors.fill: parent
-                    anchors.margins: units.gu(0.5)
+                    anchors.centerIn: parent
+                    width: blockSize*Helper.maxColumn
+                    height: blockSize*Helper.maxRow
                     color: Qt.lighter(gradientColor,1.45)
                     gradientColor: UbuntuColors.orange
                     PauseOverlay {

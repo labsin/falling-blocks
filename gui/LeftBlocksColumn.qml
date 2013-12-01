@@ -23,11 +23,11 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
 
-        spacing: units.gu(0.5)
+        spacing: Helper.spacing
 
         Item {
-            height: units.gu(1)
-            width: units.gu(1)
+            height: 0.01
+            width: 0.01
         }
 
         Label {
@@ -39,8 +39,8 @@ Item {
 
         UbuntuShape {
             id: nextBlockBG
-            height: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
-            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            height: values.blockSize * 4 + Helper.border * 2
+            width: values.blockSize * 4 + Helper.border * 2
             color: UbuntuColors.warmGrey
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -53,19 +53,19 @@ Item {
                 gradientColor: UbuntuColors.orange
                 anchors.centerIn: parent
 
+                GridOverlay {
+                    rows: 4
+                    columns: 4
+                    model: rows*columns
+                    imgWidth: values.blockSize
+                    imgheight: values.blockSize
+                    anchors.centerIn: parent
+                }
+
                 PauseOverlay {
                     anchors.fill: parent
                     visible: values.paused
                 }
-            }
-
-            GridOverlay {
-                rows: 4
-                columns: 4
-                model: rows*columns
-                imgWidth: values.blockSize
-                imgheight: values.blockSize
-                anchors.centerIn: parent
             }
         }
 
@@ -78,8 +78,8 @@ Item {
 
         UbuntuShape {
             id: storedBlockBG
-            height: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
-            width: values.blockSize * (4 + (Helper.blockInfoColmun - 4)/4)
+            height: values.blockSize * 4 + Helper.border * 2
+            width: values.blockSize * 4 + Helper.border * 2
             color: UbuntuColors.warmGrey
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -100,11 +100,6 @@ Item {
                     }
                 }
 
-                PauseOverlay {
-                    anchors.fill: parent
-                    visible: values.paused
-                }
-
                 GridOverlay {
                     rows: 4
                     columns: 4
@@ -113,12 +108,17 @@ Item {
                     imgheight: values.blockSize
                     anchors.centerIn: parent
                 }
+
+                PauseOverlay {
+                    anchors.fill: parent
+                    visible: values.paused
+                }
             }
         }
 
         Item {
-            height: units.gu(1)
-            width: units.gu(1)
+            height: 0.01
+            width: 0.01
         }
     }
 
