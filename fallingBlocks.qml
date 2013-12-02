@@ -69,6 +69,10 @@ MainView {
     }
 
     Component.onCompleted: {
+        print(i18n.domain)
+        i18n.domain = "fallingblocks"
+        i18n.bindtextdomain(i18n.domain,"locale")
+
         Game.valuesObject = values;
 
         gamePage.init()

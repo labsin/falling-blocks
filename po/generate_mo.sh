@@ -16,7 +16,7 @@
 #
 
 BUILDDIR=..
-DOMAIN=fallingblocks
+DOMAIN=com.ubuntu.developer.labsin.fallingblocks
 TARGET=./
 
 for f in `find $TARGET -type f -name "*.po"`
