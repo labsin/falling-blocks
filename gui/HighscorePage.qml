@@ -30,7 +30,7 @@ Page {
                         left: frst.right
                         margins: __contentsMargins
                     }
-                    text: mainDbObj.highScores.contents.scores[index][0]
+                    text: mainDbObj.highScores.contents.scores[index].name
                 }
 
                 Label {
@@ -40,7 +40,7 @@ Page {
                         right: parent.right
                         margins: __contentsMargins
                     }
-                    text: mainDbObj.highScores.contents.scores[index][1]
+                    text: mainDbObj.highScores.contents.scores[index].score
                 }
             }
         }
