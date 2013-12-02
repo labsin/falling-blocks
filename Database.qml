@@ -27,10 +27,10 @@ Item {
         print("removeScore::highScrores:"+highScores.contents.scores)
     }
 
-    function addScore(score, name) {
+    function addScore(name) {
         print("addScore::highScrores:"+highScores.contents.scores)
         var tempContents = highScores.contents
-        tempContents["scores"].push({score: score, name: name})
+        tempContents["scores"].push({score: values.score, name: name, level: values.level, lines: values.lines, startingLevel: values.startingLevel})
         highScores.contents = tempContents
     }
 }

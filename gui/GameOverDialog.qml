@@ -66,7 +66,7 @@ Dialog {
         progression: true
         onClicked: {
             if(control.text) {
-                mainDbObj.addScore(values.score, control.text)
+                mainDbObj.addScore(control.text)
                 nameInput.colapse()
                 hightscoreButton.expand()
             }
