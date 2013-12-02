@@ -14,6 +14,16 @@ Page {
     signal sizeChanged
     signal init
 
+    onWidthChanged: sizeChanged()
+    onHeightChanged: sizeChanged()
+
+    onSizeChanged: {
+        if(Game.debug)
+            print("BlocksPage::sizeChanged")
+        if(Game.valuesObject && Game.valuesObject.initiated)
+            Helper.calcBlockSize()
+    }
+
     Item {
         id: gameRow
         anchors.top: parent.top
@@ -124,16 +134,6 @@ Page {
         height: units.gu(5)
     }
 
-    onWidthChanged: sizeChanged()
-    onHeightChanged: sizeChanged()
-
-    onSizeChanged: {
-        if(Game.debug)
-            print("BlocksPage::sizeChanged")
-        if(Game.valuesObject && Game.valuesObject.initiated)
-            Helper.calcBlockSize()
-    }
-
     states: [
         State {
             name: "GameOver"
@@ -147,6 +147,7 @@ Page {
             }
         }
     ]
+
     Timer {
         id: delay
         interval: 2000
