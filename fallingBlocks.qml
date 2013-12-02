@@ -30,31 +30,42 @@ MainView {
         id:mainDbObj
     }
 
-    Tabs {
-        id: tabs
-        Tab {
+    PageStack {
+        id: stack
+        Component.onCompleted: push(tabs)
+
+        Tabs {
+            id: tabs
+            visible: false
+
+            Tab {
+                title: i18n.tr("FallingBlocks")
+                page: BlocksPage {
+                    id: gamePage
+                }
+            }
+
+            Tab {
+                title: i18n.tr("Highscores")
+                page: HighscorePage {
+                    id: highscorePage
+                }
+            }
+
+            onCurrentPageChanged: {
+                if(currentPage!=1 && values.running==true) {
+                    values.paused = true;
+                }
+            }
+
+        }
+
+        SettingPage {
+            id: settingPage
             title: i18n.tr("Settings")
-            page: SettingPage {
-                id: settingPage
-            }
+            visible: false
         }
-        Tab {
-            title: i18n.tr("FallingBlocks")
-            page: BlocksPage {
-                id: gamePage
-            }
-        }
-        Tab {
-            title: i18n.tr("Highscores")
-            page: HighscorePage {
-                id: highscorePage
-            }
-        }
-        onCurrentPageChanged: {
-            if(currentPage!=1 && values.running==true) {
-                values.paused = true;
-            }
-        }
+
     }
 
     Component.onCompleted: {
