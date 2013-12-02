@@ -174,7 +174,8 @@ Page {
     }
 
     tools: ToolbarItems {
-        Component.onCompleted: close()
+        id: toolbar
+        Component.onCompleted: toolbar.opened = false
         ToolbarButton {
             text: i18n.tr("New Game")
             iconSource: "image://theme/reload"
