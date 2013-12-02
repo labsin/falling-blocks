@@ -30,7 +30,18 @@ Item {
     function addScore(name) {
         print("addScore::highScrores:"+highScores.contents.scores)
         var tempContents = highScores.contents
-        tempContents["scores"].push({score: values.score, name: name, level: values.level, lines: values.lines, startingLevel: values.startingLevel})
+        var score = emptyScore()
+        score["score"] = values.score
+        score["name"] = name
+        score["level"] = values.level
+        score["lines"] = values.lines
+        score["startingLevel"] = values.startingLevel
+        tempContents["scores"].push(score)
+        tempContents["scores"].sort(function(a,b){return b.score-a.score});
         highScores.contents = tempContents
+    }
+
+    function emptyScore() {
+        return {score: 0, name: "", level: 0, lines: 0, startingLevel: 0}
     }
 }
