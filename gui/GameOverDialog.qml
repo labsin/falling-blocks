@@ -6,7 +6,7 @@ import "../logic/game.js" as Game
 
 Dialog {
     id: dialogue
-    title: i18n.tr("Game Over")
+    title: values.nowHighscore?i18n.tr("New Highscore"):i18n.tr("Game Over")
     text: i18n.tr("You score is:")+" "+values.score+"\n"+i18n.tr("What's next?")
     Button {
         text: i18n.tr("Nothing")
