@@ -16,6 +16,8 @@ QtObject {
     property int level: 0
     property int deltaTime: 1000
     property int comboScore: 0
+    property int highscore: 0
+    property bool nowHighscore: highscore < score
 
     property int startingLevel: 1
     property int sensitivity: 5
@@ -75,6 +77,7 @@ QtObject {
         lines = 0
         level = 0
         deltaTime = 1000
+        highscore = mainDbObj.highScore.score
         initiated = true
     }
 }

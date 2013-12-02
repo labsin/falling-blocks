@@ -26,6 +26,14 @@ MainView {
         }
     }
 
+    Connections {
+        target: mainDbObj
+        onHighScoreChanged: {
+            print("HishscoreChanged"+mainDbObj.highScore.score)
+            values.highscore = mainDbObj.highScore.score
+        }
+    }
+
     Database {
         id:mainDbObj
     }

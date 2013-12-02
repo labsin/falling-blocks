@@ -4,6 +4,12 @@ import U1db 1.0 as U1db
 Item {
     property QtObject highScores: highScores
     property QtObject db: mainDb
+    property variant highScore
+
+    Component.onCompleted: {
+        highScore = emptyScore()
+    }
+
     U1db.Database {
         id: mainDb
         path: "blocksDb"
@@ -14,8 +20,14 @@ Item {
         docId: 'highScores'
         create: true
         defaults: { "scores": [], }
-        Component.onCompleted: {
-            print("highScrores::"+highScores.contents.scores)
+        onContentsChanged: {
+            var tempContents = highScores.contents
+            if(typeof tempContents["scores"] != "undefined" && typeof tempContents["scores"][0] != "undefined") {
+                highScore = tempContents["scores"][0]
+            }
+            else {
+                highScore = emptyScore()
+            }
         }
     }
 
