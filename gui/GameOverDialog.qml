@@ -7,16 +7,19 @@ import "../logic/game.js" as Game
 Dialog {
     id: dialogue
     title: values.nowHighscore?i18n.tr("New Highscore"):i18n.tr("Game Over")
-    text: i18n.tr("You score is:")+" "+values.score+"\n"+i18n.tr("What's next?")
+    text: i18n.tr("You score is:")
+          + " " + values.score+"\n"
+          + i18n.tr("What's next?")
+
     Button {
-        text: i18n.tr("Nothing")
+        text: i18n.tr("Do Nothing")
         onClicked: PopupUtils.close(dialogue)
         gradient: UbuntuColors.greyGradient
     }
 
     Button {
         id: saveButton
-        text: i18n.tr("Save")
+        text: i18n.tr("Save Score")
 
         Behavior on height {
             UbuntuNumberAnimation {  }
@@ -75,7 +78,7 @@ Dialog {
 
     Button {
         id: hightscoreButton
-        text: i18n.tr("Highscores")
+        text: i18n.tr("Show Highscores")
 
         Behavior on height {
             UbuntuNumberAnimation {  }
