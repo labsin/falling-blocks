@@ -68,6 +68,14 @@ MainView {
 
     }
 
+    Connections {
+        target: Qt.application
+        onActiveChanged:
+            if(!Qt.application.active && values.running) {
+                values.paused = true
+            }
+    }
+
     Component.onCompleted: {
         print(i18n.domain)
         i18n.domain = "fallingblocks"
