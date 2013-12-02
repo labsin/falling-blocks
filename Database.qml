@@ -18,11 +18,19 @@ Item {
             print("highScrores::"+highScores.contents.scores)
         }
     }
+
     function removeScore(index) {
         print("removeScore::highScrores:"+highScores.contents.scores)
         var tempContents = highScores.contents
         tempContents["scores"].splice(index,1)
         highScores.contents = tempContents
         print("removeScore::highScrores:"+highScores.contents.scores)
+    }
+
+    function addScore(score, name) {
+        print("addScore::highScrores:"+highScores.contents.scores)
+        var tempContents = highScores.contents
+        tempContents["scores"].push({score: score, name: name})
+        highScores.contents = tempContents
     }
 }
