@@ -5,9 +5,6 @@ import Ubuntu.Components.ListItems 0.1 as ListItem
 Page {
     Column {
         width: parent.width
-        ListItem.Header {
-            text: i18n.tr("Highscores")
-        }
         Repeater {
             model: mainDbObj.highScores.contents.scores.length
             ListItem.Empty {

@@ -6,31 +6,36 @@ import "../logic/game.js" as Game
 Page {
     signal init
     Column {
-        width: parent.width
+        spacing: units.gu(2)
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.margins: units.gu(2)
         ListItem.Header {
-            text: i18n.tr("New game settings")
-        }
-        ListItem.Caption {
             text: i18n.tr("Begin level:")
         }
         TextField {
             id: startingLevel
             enabled: !values.started
             placeholderText:  "1-15"
-            width: parent.width
             validator: IntValidator{bottom: 1; top: 15;}
+            anchors {
+                left: parent.left; right: parent.right
+            }
         }
         Binding {
             target: values
             property: "startingLevel"
             value: parseInt(startingLevel.text)?parseInt(startingLevel.text):1
         }
-        ListItem.Caption {
+        ListItem.Header {
             text: i18n.tr("Drop sensitivity:")
         }
         Slider {
             id: sensitivity
-            width: parent.width
+            anchors {
+                left: parent.left; right: parent.right
+            }
             live: false
             value: 5
             minimumValue: 1
