@@ -15,6 +15,8 @@ MainView {
 
     applicationName: "com.ubuntu.developer.labsin.fallingblocks"
 
+    automaticOrientation: true
+
     QtValues {
         id: values
         onGameOverChanged: {
