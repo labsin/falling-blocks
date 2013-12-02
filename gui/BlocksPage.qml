@@ -124,12 +124,6 @@ Page {
         height: units.gu(5)
     }
 
-    tools: ToolbarItems {
-        // reference to an action:
-        ToolbarButton {
-            action: actionNew
-        }
-    }
     onWidthChanged: sizeChanged()
     onHeightChanged: sizeChanged()
 
@@ -162,12 +156,6 @@ Page {
         }
     }
 
-    Action {
-        id: actionNew
-        text: i18n.tr("New Game")
-        onTriggered: Game.startNewGame()
-    }
-
     onRunningChanged: {
         if(!running) {
             Helper.stopRunning()
@@ -182,5 +170,22 @@ Page {
         blockInfo.init()
         blocksPage.running = Qt.binding(function() {return Game.valuesObject.running})
         Game.valuesObject.blockSize = Qt.binding(function () {return blocksPage.blockSize})
+    }
+
+    tools: ToolbarItems {
+        Component.onCompleted: close()
+        ToolbarButton {
+            text: i18n.tr("New Game")
+            iconSource: "image://theme/reload"
+            onTriggered: Game.startNewGame()
+        }
+        ToolbarButton {
+            text: i18n.tr("Settings")
+            iconSource: "image://theme/settings"
+            onTriggered: {
+                // Launch settings
+                pageStack.push(settingPage)
+            }
+        }
     }
 }
