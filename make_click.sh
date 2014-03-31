@@ -1,7 +1,7 @@
 #!/bin/bash
 FROMDIR="$(pwd)"
 BUILDDIR="${FROMDIR}_click"
-NAME="solitaire-games"
+NAME="fallingBlocks"
 rm -rf $BUILDDIR
 cp -r $FROMDIR $BUILDDIR
 echo "Entering ${BUILDDIR}"

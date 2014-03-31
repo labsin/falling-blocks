@@ -2,7 +2,7 @@
 Name=FallingBlocks
 Comment=A Blocks app made for Ubuntu touch
 Exec=qmlscene $@ fallingBlocks.qml
-Icon=qmlscene
+Icon=fallingBlocks.png
 Terminal=false
 Type=Application
 Categories=Qt;Game;
