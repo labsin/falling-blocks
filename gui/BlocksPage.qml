@@ -82,8 +82,8 @@ Page {
                         visible: values.paused
                     }
 
-                    Mouse {
-                        enabled: running
+                    MouseObj {
+                        enabled: blocksPage.running
                         id: currentPieceMouse
                     }
 
