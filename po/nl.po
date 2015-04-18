@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-29 20:10+0100\n"
+"POT-Creation-Date: 2015-04-18 20:04+0200\n"
 "PO-Revision-Date: 2013-11-29 20:34+0100\n"
 "Last-Translator: Sam Segers <sam.sgrs@gmail.com>\n"
 "Language-Team: Nederlands <>\n"
@@ -19,6 +19,50 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
+#: gui/BlocksPage.qml:179 fallingBlocks.qml:154
+msgid "Settings"
+msgstr "Instellingen"
+
+#: gui/GameOverDialog.qml:9
+msgid "New Highscore"
+msgstr "Nieuwe Highscore"
+
+#: gui/GameOverDialog.qml:9
+msgid "Game Over"
+msgstr "Game Over"
+
+#: gui/GameOverDialog.qml:10
+msgid "You score is:"
+msgstr "Uw score is:"
+
+#: gui/GameOverDialog.qml:12
+msgid "What's next?"
+msgstr "Wat nu?"
+
+#: gui/GameOverDialog.qml:16
+msgid "Do Nothing"
+msgstr "Niets Doen"
+
+#: gui/GameOverDialog.qml:23
+msgid "Save Score"
+msgstr "Bewaar Score"
+
+#: gui/GameOverDialog.qml:44
+msgid "Close"
+msgstr "Sluiten"
+
+#: gui/GameOverDialog.qml:69
+msgid "Name"
+msgstr "Naam"
+
+#: gui/GameOverDialog.qml:83
+msgid "Show Highscores"
+msgstr "Toon Highscores"
+
+#: gui/GameOverDialog.qml:110
+msgid "Restart"
+msgstr "Herstarten"
+
 #: gui/LeftBlocksColumn.qml:36
 msgid "Next block:"
 msgstr "Volgende:"
@@ -27,54 +71,40 @@ msgstr "Volgende:"
 msgid "Stored:"
 msgstr "Bewaard:"
 
-#: gui/BlocksPage.qml:167
-msgid "New Game"
-msgstr "Nieuw Spel"
-
-#: gui/HighscorePage.qml:9 fallingBlocks.qml:46
-msgid "Highscores"
-msgstr "Highscores"
-
 #: gui/PauseOverlay.qml:11
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: gui/SettingPage.qml:11
-msgid "New game settings"
-msgstr "Nieuw spel instellingen"
+#: gui/SettingPage.qml:15
+msgid "Begin level"
+msgstr "Begin level"
 
-#: gui/SettingPage.qml:14
-msgid "Begin level:"
-msgstr "Begin level:"
+#: gui/SettingPage.qml:33
+msgid "Drop sensitivity"
+msgstr "Val gevoeligheid"
 
-#: gui/SettingPage.qml:29
-msgid "Drop sensitivity:"
-msgstr "Val gevoeligheid:"
+#: gui/SettingPage.qml:52
+msgid "Debug"
+msgstr "Debug"
 
-#: fallingBlocks.qml:34 gui/GameOverDialog.qml:16
-msgid "Settings"
-msgstr "Instellingen"
+#: gui/SettingPage.qml:66
+msgid "Music Volume"
+msgstr "Muziekvolume"
 
-#: fallingBlocks.qml:40
+#: gui/SettingPage.qml:84
+msgid "Fx Volume"
+msgstr "Fx Volume"
+
+#: fallingBlocks.qml:126
 msgid "FallingBlocks"
 msgstr "VallendeBlokken"
 
-#: gui/GameOverDialog.qml:8
-msgid "Game Over"
-msgstr "Game Over"
+#: fallingBlocks.qml:133
+msgid "Highscores"
+msgstr "Highscores"
 
-#: gui/GameOverDialog.qml:9
-msgid "You score is:"
-msgstr "Uw score is:"
+#~ msgid "New Game"
+#~ msgstr "Nieuw Spel"
 
-#: gui/GameOverDialog.qml:9
-msgid "What's next?"
-msgstr "Wat nu?"
-
-#: gui/GameOverDialog.qml:11
-msgid "nothing"
-msgstr "niets"
-
-#: gui/GameOverDialog.qml:23
-msgid "Restart"
-msgstr "Herstarten"
+#~ msgid "New game settings"
+#~ msgstr "Nieuw spel instellingen"

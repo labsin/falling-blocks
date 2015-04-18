@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-29 20:10+0100\n"
+"POT-Creation-Date: 2015-04-18 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,50 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: gui/BlocksPage.qml:179 fallingBlocks.qml:154
+msgid "Settings"
+msgstr ""
+
+#: gui/GameOverDialog.qml:9
+msgid "New Highscore"
+msgstr ""
+
+#: gui/GameOverDialog.qml:9
+msgid "Game Over"
+msgstr ""
+
+#: gui/GameOverDialog.qml:10
+msgid "You score is:"
+msgstr ""
+
+#: gui/GameOverDialog.qml:12
+msgid "What's next?"
+msgstr ""
+
+#: gui/GameOverDialog.qml:16
+msgid "Do Nothing"
+msgstr ""
+
+#: gui/GameOverDialog.qml:23
+msgid "Save Score"
+msgstr ""
+
+#: gui/GameOverDialog.qml:44
+msgid "Close"
+msgstr ""
+
+#: gui/GameOverDialog.qml:69
+msgid "Name"
+msgstr ""
+
+#: gui/GameOverDialog.qml:83
+msgid "Show Highscores"
+msgstr ""
+
+#: gui/GameOverDialog.qml:110
+msgid "Restart"
+msgstr ""
 
 #: gui/LeftBlocksColumn.qml:36
 msgid "Next block:"
@@ -25,54 +69,34 @@ msgstr ""
 msgid "Stored:"
 msgstr ""
 
-#: gui/BlocksPage.qml:167
-msgid "New Game"
-msgstr ""
-
-#: gui/HighscorePage.qml:9 fallingBlocks.qml:46
-msgid "Highscores"
-msgstr ""
-
 #: gui/PauseOverlay.qml:11
 msgid "Paused"
 msgstr ""
 
-#: gui/SettingPage.qml:11
-msgid "New game settings"
+#: gui/SettingPage.qml:15
+msgid "Begin level"
 msgstr ""
 
-#: gui/SettingPage.qml:14
-msgid "Begin level:"
+#: gui/SettingPage.qml:33
+msgid "Drop sensitivity"
 msgstr ""
 
-#: gui/SettingPage.qml:29
-msgid "Drop sensitivity:"
+#: gui/SettingPage.qml:52
+msgid "Debug"
 msgstr ""
 
-#: fallingBlocks.qml:34 gui/GameOverDialog.qml:16
-msgid "Settings"
+#: gui/SettingPage.qml:66
+msgid "Music Volume"
 msgstr ""
 
-#: fallingBlocks.qml:40
+#: gui/SettingPage.qml:84
+msgid "Fx Volume"
+msgstr ""
+
+#: fallingBlocks.qml:126
 msgid "FallingBlocks"
 msgstr ""
 
-#: gui/GameOverDialog.qml:8
-msgid "Game Over"
-msgstr ""
-
-#: gui/GameOverDialog.qml:9
-msgid "You score is:"
-msgstr ""
-
-#: gui/GameOverDialog.qml:9
-msgid "What's next?"
-msgstr ""
-
-#: gui/GameOverDialog.qml:11
-msgid "nothing"
-msgstr ""
-
-#: gui/GameOverDialog.qml:23
-msgid "Restart"
+#: fallingBlocks.qml:133
+msgid "Highscores"
 msgstr ""
