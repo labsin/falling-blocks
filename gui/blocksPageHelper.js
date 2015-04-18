@@ -61,7 +61,7 @@ function handelKey(key) {
         Game.rotateCW()
     } else if (key == Qt.Key_Space) {
         Game.hardDrop()
-    } else if (key == Qt.Key_F) {
+    } else if (key == Qt.Key_F || key == Qt.Key_Shift) {
         Game.storeCurrent()
     }
 }
@@ -78,6 +78,8 @@ function isKnownKey(key) {
     } else if (key == Qt.Key_Space) {
         return true;
     } else if (key == Qt.Key_F) {
+        return true;
+    } else if (key == Qt.Key_Shift) {
         return true;
     }
     return false;
