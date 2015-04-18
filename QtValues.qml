@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import "gui/blocks"
 
 
@@ -11,6 +11,7 @@ QtObject {
     property bool waiting: false
     property bool started: false
     property bool gameOver: false
+    property bool debug: false
     property int score: 0
     property int lines: 0
     property int level: 0

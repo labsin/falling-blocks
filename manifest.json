@@ -1,7 +1,7 @@
 {
     "architecture": "all",
     "description": "Falling blocks is a game with blocks that are falling in a grid",
-    "framework": "ubuntu-sdk-14.04-qml-dev1",
+    "framework": "ubuntu-sdk-14.04-qml",
     "hooks": {
         "fallingBlocks": {
             "apparmor": "fallingBlocks.json",

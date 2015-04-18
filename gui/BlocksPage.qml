@@ -1,6 +1,6 @@
-import QtQuick 2.0
-import Ubuntu.Components 0.1
-import Ubuntu.Components.Popups 0.1
+import QtQuick 2.2
+import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 import "blocks"
 import "../logic/game.js" as Game
 import "blocksPageHelper.js" as Helper
@@ -18,7 +18,7 @@ Page {
     onHeightChanged: sizeChanged()
 
     onSizeChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("BlocksPage::sizeChanged")
         if(Game.valuesObject && Game.valuesObject.initiated)
             Helper.calcBlockSize()
@@ -99,7 +99,7 @@ Page {
                     Keys.enabled: running
 
                     Keys.onReleased: {
-                        if(Game.debug)
+                        if(values.debug)
                             print("BlocksPage::Keys.onReleased:"+event.key)
                         if(Helper.keyReleased(event.key))
                             event.accepted = true
@@ -164,7 +164,7 @@ Page {
     }
 
     onInit: {
-        if(Game.debug)
+        if(values.debug)
             print("BlocksPage::onInit")
         Helper.calcBlockSize()
         Game.valuesObject.gameCanvas = gameCanvasPlain;
@@ -173,21 +173,14 @@ Page {
         Game.valuesObject.blockSize = Qt.binding(function () {return blocksPage.blockSize})
     }
 
-    tools: ToolbarItems {
-        id: toolbar
-        Component.onCompleted: toolbar.opened = false
-        ToolbarButton {
-            text: i18n.tr("New Game")
-            iconSource: "image://theme/reload"
-            onTriggered: Game.startNewGame()
-        }
-        ToolbarButton {
+    head.actions: [
+        Action {
+            iconName: "settings"
             text: i18n.tr("Settings")
-            iconSource: "image://theme/settings"
             onTriggered: {
                 // Launch settings
                 pageStack.push(settingPage)
             }
         }
-    }
+    ]
 }

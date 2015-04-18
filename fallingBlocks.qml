@@ -1,5 +1,6 @@
-import QtQuick 2.0
-import Ubuntu.Components 0.1
+import QtQuick 2.2
+import Ubuntu.Components 1.1
+import QtMultimedia 5.0
 import "gui"
 import "logic/game.js" as Game
 
@@ -15,7 +16,8 @@ MainView {
 
     applicationName: "com.ubuntu.developer.labsin.fallingblocks"
 
-    automaticOrientation: true
+    automaticOrientation: false
+    useDeprecatedToolbar: false
 
     QtValues {
         id: values
@@ -29,7 +31,8 @@ MainView {
     Connections {
         target: mainDbObj
         onHighScoreChanged: {
-            print("HishscoreChanged"+mainDbObj.highScore.score)
+            if(values.debug)
+                print("HighscoreChanged"+mainDbObj.highScore.score)
             values.highscore = mainDbObj.highScore.score
         }
     }
@@ -85,9 +88,6 @@ MainView {
     }
 
     Component.onCompleted: {
-        print(i18n.domain)
-        i18n.domain = "fallingblocks"
-        i18n.bindtextdomain(i18n.domain,"locale")
 
         Game.valuesObject = values;
 

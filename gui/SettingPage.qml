@@ -1,6 +1,6 @@
-import QtQuick 2.0
-import Ubuntu.Components 0.1
-import Ubuntu.Components.ListItems 0.1 as ListItem
+import QtQuick 2.2
+import Ubuntu.Components 1.1
+import Ubuntu.Components.ListItems 1.0 as ListItem
 import "../logic/game.js" as Game
 
 Page {
@@ -45,6 +45,20 @@ Page {
             target: values
             property: "sensitivity"
             value: sensitivity.value
+            when: initiated
+        }
+        ListItem.Standard {
+            text: i18n.tr("Debug")
+            control: Switch {
+                id: debug
+                checked: false
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+        Binding {
+            target: values
+            property: "debug"
+            value: debug.checked
         }
     }
 }

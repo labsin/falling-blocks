@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import Ubuntu.Components 0.1
+import QtQuick 2.2
+import Ubuntu.Components 1.1
 import "../../logic/game.js" as Game
 
 UbuntuShape {
@@ -24,7 +24,7 @@ UbuntuShape {
     color: "#3F3F3F"
 
     onShapeChanged: {
-        if(Game.debug)
+        if(Game.valuesObject.debug)
             print("Normal::onShapeChanged():"+shape)
         switch(shape)
         {

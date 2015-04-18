@@ -17,11 +17,12 @@ function calcBlockSize() {
                 (gameRow.width - spacing * 6
                  - border * 4) / (maxColumn + blockInfoColmun),
                 (gameRow.height - spacing * 2 - border * 2) / maxRow)
-    print(blockSize)
+    if(values.debug)
+        print(blockSize)
 }
 
 function keyPressed(key) {
-    if(Game.debug)
+    if(values.debug)
         print("blocksPageHelper::keyPressed"+key)
     if(!isKnownKey(key))
         return false
@@ -34,7 +35,7 @@ function keyPressed(key) {
 }
 
 function keyReleased(key) {
-    if(Game.debug)
+    if(values.debug)
         print("blocksPageHelper::keyReleased"+key)
     if(!isKnownKey(key))
         return false
@@ -48,7 +49,7 @@ function keyReleased(key) {
 }
 
 function handelKey(key) {
-    if(Game.debug)
+    if(values.debug)
         print("blocksPageHelper::handelKey"+key)
     if (key == Qt.Key_Right) {
         Game.moveX(1)
@@ -83,7 +84,7 @@ function isKnownKey(key) {
 }
 
 function keyRepeat() {
-    if(Game.debug)
+    if(values.debug)
         print("blocksPageHelper::keyRepeat"+down)
     for(var iii=0;iii<down.length;iii++) {
         handelKey(down[iii])
@@ -91,7 +92,7 @@ function keyRepeat() {
 }
 
 function stopRunning() {
-    if(Game.debug)
+    if(values.debug)
         print("blocksPageHelper::stopRunning")
     down = new Array
     keyTimer.stop()

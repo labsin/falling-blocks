@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import "../../logic/game.js" as Game
 
 Item {
@@ -26,7 +26,7 @@ Item {
     visible: false
 
     onIsCurrentChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::onIsCurrentChanged():"+isCurrent)
         if(isCurrent) {
             isStored = false
@@ -34,7 +34,7 @@ Item {
         }
     }
     onIsNextChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::onIsNextChanged():"+isNext)
         if(isNext) {
             isCurrent = false
@@ -42,7 +42,7 @@ Item {
         }
     }
     onIsStoredChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::onIsStoredChanged():"+isStored)
         if(isStored) {
             isNext = false
@@ -52,13 +52,13 @@ Item {
     }
 
     onShapeChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::onShapeChanged:" + shape)
         rebuildBlockArray()
     }
 
     onRotationChanged: {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::onRotationChanged:" + rotation)
         rebuildBlockArray()
     }
@@ -69,7 +69,7 @@ Item {
             when: isNext
             StateChangeScript {
                 script: {
-                    if(Game.debug)
+                    if(values.debug)
                         print("Shape::StateChangeNextBox")
                     visible = true
                     goingDownTimer.stop()
@@ -81,7 +81,7 @@ Item {
             when: isStored
             StateChangeScript {
                 script: {
-                    if(Game.debug)
+                    if(values.debug)
                         print("Shape::StateChangeStoredBox")
                     visible = true
                     goingDownTimer.stop()
@@ -94,7 +94,7 @@ Item {
             StateChangeScript {
                 script: {
                     z = 80
-                    if(Game.debug)
+                    if(values.debug)
                         print("Shape::StateChangeFalling")
                     visible = true
                     if(Game.valuesObject.running)
@@ -107,7 +107,7 @@ Item {
             when: !isCurrent && !isNext && !isStored
             StateChangeScript {
                 script: {
-                    if(Game.debug)
+                    if(values.debug)
                         print("Shape::StateChangeNothing")
                     visible = false
                     goingDownTimer.stop()
@@ -157,7 +157,7 @@ Item {
     }
 
     function rebuildBlockArray() {
-        if(Game.debug)
+        if(values.debug)
             print("Shape::rebuildBlockArray():"+blockArray)
         if(blockArray==undefined)
             blockArray = new Array
@@ -165,7 +165,8 @@ Item {
     }
 
     function onRunningChanged(running) {
-        print("Shape::onRunningChanged():"+running)
+        if(values.debug)
+            print("Shape::onRunningChanged():"+running)
         if(running && state == "falling")
             goingDownTimer.restart()
         if(!running)

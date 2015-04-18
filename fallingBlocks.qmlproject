@@ -16,10 +16,18 @@ Project {
         directory: "."
     }
     Files {
+        directory: "music"
+        filter: "*"
+    }
+    Files {
+        directory: "fx"
+        filter: "*"
+    }
+    Files {
         filter: "*.desktop"
     }
     Files {
-        filter: "Makefile"
+        filter: "*.json"
     }
     Files {
         directory: "html"

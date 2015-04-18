@@ -1,10 +1,10 @@
 .pragma library
 
-// Do we want debug lines?
-var debug = true
+// To share values with the whole program
+var valuesObject;
 
 function createQMLObject(component, caller, params) {
-    if(debug)
+    if(valuesObject.debug)
         print("createQMLObject")
     var qmlObjComponent = null;
     if (component.createObject) {
@@ -13,7 +13,9 @@ function createQMLObject(component, caller, params) {
     } else if (typeof component === "string") {
         qmlObjComponent = Qt.createComponent(component);
     } else {
-        print("CreateQMLObject(): "+component+" is not a component or a link");
+
+        if(valuesObject.debug)
+            print("CreateQMLObject(): "+component+" is not a component or a link");
         return null;
     }
 
@@ -40,19 +42,19 @@ function Stack() {
 }
 
 Stack.prototype.stackAdd = function (valueToAdd) {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::stackAdd():"+valueToAdd)
     this.stack.push(valueToAdd)
 }
 
 Stack.prototype.stackAddInFront = function (valueToAdd) {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::stackAddInFront()")
     this.stack.unshift(valueToAdd)
 }
 
 Stack.prototype.stackGet = function () {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::stackGet()")
     var retrievedQueueValue = this.stack.shift()
     if (!(retrievedQueueValue === null || retrievedQueueValue === undefined)) {
@@ -64,7 +66,7 @@ Stack.prototype.stackGet = function () {
 }
 
 Stack.prototype.emptyStack = function () {
-    if (debug)
+    if (valuesObject.debug)
         print("Stack::emptyStack")
     for(var iii=0; iii<this.stack.length; iii++)
         delete this.stack[iii];
@@ -72,39 +74,39 @@ Stack.prototype.emptyStack = function () {
 }
 
 Stack.prototype.addNewRandom = function () {
-    if (debug)
+    if (valuesObject.debug)
         print("stack::addNewRandom")
 //    this.stackAdd(Math.floor(Math.random() * 7))
     this.stackAdd(this.random.nextInt(0,6))
 }
 
 Stack.prototype.removeCurrent = function () {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::removeCurrent()")
     delete this.stack.shift()
     this.addNewRandom();
 }
 
 Stack.prototype.getCurrent = function () {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::getCurrent()")
     return this.stack[0]
 }
 
 Stack.prototype.getItem = function (i) {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::getItem()" + i)
     return this.stack[i];
 }
 
 Stack.prototype.getLength = function () {
-    if(debug)
+    if(valuesObject.debug)
         print("Stack::getLength()")
     return this.stack.length
 }
 
 Stack.prototype.init = function (amount) {
-    if (debug)
+    if (valuesObject.debug)
         print("Stack::init")
     if(this.stack.length>0)
         this.emptyStack()
@@ -121,7 +123,7 @@ Stack.prototype.constructor = Stack
 // compare the board array with an array of the 4 blocks in a piece.
 // If one of them overlap or go out of bound, it's a collision.
 Array.prototype.collision = function (array, columnOffset, rowOffset) {
-    if(debug)
+    if(valuesObject.debug)
         print("Array.collision()")
     if(array === undefined)
         return false
@@ -131,12 +133,15 @@ Array.prototype.collision = function (array, columnOffset, rowOffset) {
         var column = columnOffset + array[iii].column;
         var row = rowOffset + array[iii].row;
         if(row >= maxRow || column >= maxColumn || row < 0 || column < 0 ) {
-            print("Array.collision()::outOfBorder:"+column+","+row)
+            if(valuesObject.debug)
+                print("Array.collision()::outOfBorder:"+column+","+row)
             return true
         } else
         if (this[index(column, row)]  !== undefined && this[index(column, row)]  !== null) {
             // Return true if both exist on the same spot
-            print("Array.collision()::collide:"+column+","+row)
+
+            if(valuesObject.debug)
+                print("Array.collision()::collide:"+column+","+row)
             return true
         }
     }
@@ -145,7 +150,7 @@ Array.prototype.collision = function (array, columnOffset, rowOffset) {
 
 // Returns an array with unique values and ordered ASSENDING.
 Array.prototype.getUniqueSorted = function(){
-    if(debug)
+    if(valuesObject.debug)
         print("Array.getUniqueSorted()")
     var u = {}, a = [];
     for(var i = 0, l = this.length; i < l; ++i){
@@ -160,9 +165,6 @@ Array.prototype.getUniqueSorted = function(){
     }
     return a;
 }
-
-// To share values with the whole program
-var valuesObject;
 
 // Some values
 // # columns is 10
@@ -192,14 +194,14 @@ var waitingFor=0
 
 //Index function used instead of a 2D array
 function index(column, row) {
-    if(debug) {
+    if(valuesObject.debug) {
  //       print("Get index of column: "+column+" row: "+row)
     }
     return column + (row * maxColumn)
 }
 
 function init() {
-    if(debug)
+    if(valuesObject.debug)
         print("init()")
     initBlocks()
     valuesObject.init()
@@ -208,7 +210,7 @@ function init() {
 
 // Set up the block
 function initCurrentBlock() {
-    if(debug)
+    if(valuesObject.debug)
         print("initCurrentBlock()")
     valuesObject.currentPiece.shape = blockStack.getCurrent();
     valuesObject.currentPiece.reset()
@@ -224,14 +226,14 @@ function initCurrentBlock() {
 
 // Initiate the Queue stack and load the current blocks
 function initBlocks() {
-    if(debug)
+    if(valuesObject.debug)
         print("initBlocks()")
 
     blockStack.init(stackSize)
 }
 
 function initBoard() {
-    if(debug)
+    if(valuesObject.debug)
         print("initBlocks()")
     //Delete blocks from previous game
     for (var i = 0; i < maxIndex; i++) {
@@ -265,7 +267,7 @@ function removeStoredPiece() {
 
 // Testing function that loads the whole board with Squares. Not used.
 function fillWithSquares() {
-    if (debug)
+    if (valuesObject.debug)
         print("fillWithSquares()")
     for (var column = 0; column < maxColumn; column++) {
         for (var row = 0; row < maxRow; row++) {
@@ -277,7 +279,7 @@ function fillWithSquares() {
 // create a block dynamicly on the specific place, seen from the canvas(parent) and of a specific shape(color)
 // This function returns the block object
 function createBlock(column, row, shape, canvas) {
-    if(debug)
+    if(valuesObject.debug)
         print("createBlock()::column:"+column+"/row:"+row+"/shape:"+shape+"/canvas:"+canvas)
     canvas = canvas !== undefined ? canvas : valuesObject.gameCanvas;
     if (!blockComponent)
@@ -303,10 +305,10 @@ function createBlock(column, row, shape, canvas) {
 // Creates a block specificly used in the shape that is falling. We supply the array which holds it
 // and also have to tell it where to put it in the array.
 function createShapeBlock(array, column, row, shape, canvas, iii) {
-    if(debug)
+    if(valuesObject.debug)
         print("createShapeBlock()::column:"+column+"/row:"+row+"/shape:"+shape+"/canvas:"+canvas+"/iii:"+iii)
     if(array[iii] === undefined) {
-        if(debug)
+        if(valuesObject.debug)
             print("createShapeBlock()::block is undefined, making a new one")
         array[iii] = createBlock(column, row, shape, canvas)
     } else {
@@ -317,10 +319,10 @@ function createShapeBlock(array, column, row, shape, canvas, iii) {
 
 // Sets the position of the object relative to it's parent
 function positionObject(object, column, row) {
-    if(debug)
+    if(valuesObject.debug)
         print("positionObject()::object:"+object+"/column:"+column+"/row:"+row)
     if (!object) {
-        if (false && debug)
+        if (false && valuesObject.debug)
             print("can't set block position")
         return false
     }
@@ -331,7 +333,7 @@ function positionObject(object, column, row) {
 // Positions the falling piece when it first starts going down.
 // The shapes have the same numbring than in the /blocks/Normal*.qml files
 function positionShape(shapeObj) {
-    if(debug)
+    if(valuesObject.debug)
         print("positionShape()::"+shapeObj)
     // the amount our 4*4 matrix has to move to be in the middle of the 10*20 matrix
     var middleColumn = (10-4)/2
@@ -365,7 +367,7 @@ function positionShape(shapeObj) {
 // These are defined at the bottom of this file.
 // Angles are in paces of 90° CW
 function buildArrayFromJSObj(shapeJSObj, shape, angle, canvas, array) {
-    if(debug)
+    if(valuesObject.debug)
         print("buildArrayFromJSObj()::angle:"+angle+"/shape:"+shape)
     var points
     switch(angle) {
@@ -392,7 +394,7 @@ function buildArrayFromJSObj(shapeJSObj, shape, angle, canvas, array) {
 // Build an array for a piece that drops, given the shape
 // The shapes have the same numbring than in the /blocks/Normal*.qml files
 function buildArray(shape, canvas, angle, array) {
-    if(debug)
+    if(valuesObject.debug)
         print("buildArray()::angle:"+angle+"/shape:"+shape)
     angle = angle !== undefined ? angle : 0
     array = array !== undefined ? array : new Array
@@ -425,7 +427,7 @@ function buildArray(shape, canvas, angle, array) {
 function detectCollision(columnOffset,rowOffset) {
     columnOffset = columnOffset !== undefined ? columnOffset : valuesObject.currentPiece.column
     rowOffset = rowOffset !== undefined ? rowOffset : valuesObject.currentPiece.row
-    if(debug)
+    if(valuesObject.debug)
         print("detectCollision()::columnOffset:"+columnOffset+"/rowOffset:"+rowOffset)
     return board.collision(valuesObject.currentPiece.blockArray, columnOffset, rowOffset )
 }
@@ -433,7 +435,7 @@ function detectCollision(columnOffset,rowOffset) {
 // Adds the current falling piece to the board and removes it from the stack.
 // Next it checks for Lines and marks them for removal
 function addCurrentToBoard() {
-    if(debug)
+    if(valuesObject.debug)
         print("addCurrentToBoard()")
     addingToBoard = true;
     var array = valuesObject.currentPiece.blockArray;
@@ -458,10 +460,11 @@ function addCurrentToBoard() {
 
 function processLines(lines) {
     var nLines = lines.length
-    if(debug)
+    if(valuesObject.debug)
         print("lines: " + lines + " nLines: " + nLines)
     if(nLines > 0) {
-        print("Made " + nLines + " lines")
+        if(valuesObject.debug)
+            print("Made " + nLines + " lines")
         for(var jjj=0; jjj < nLines; jjj++){
             removeLine(lines[jjj])
         }
@@ -475,7 +478,8 @@ function processLines(lines) {
 // Marks a line for removal. It creates a row for an animation and binds the blocks that need to be removed to that.
 // After the animation it destroys itself and calls dropAllAboveThisLineOne
 function removeLine(line) {
-    print("RemoveLine()::line:" + line)
+    if(valuesObject.debug)
+        print("RemoveLine()::line:" + line)
     valuesObject.waiting = true;
 
     if(!rowComponent)
@@ -511,7 +515,7 @@ function removeLine(line) {
 
 // one of our row remove animations has destroyed itself
 function removeOneFromWaitinglist () {
-    if(debug)
+    if(valuesObject.debug)
         print("removeOneFromWaitingList()")
     waitingFor--;
     if(waitingFor<=0) {
@@ -523,12 +527,12 @@ function removeOneFromWaitinglist () {
 
 // Remove a line and drop all rows one down
 function dropAllAboveThisLineOne(line) {
-    if(debug)
+    if(valuesObject.debug)
         print("dropAllAboveThisLineOne():"+line)
     var column
     for(column = 0; column < maxColumn; column++) {
         if(board[index(column,line)] !== null && board[index(column,line)] !== undefined) {
-            if(debug)
+            if(valuesObject.debug)
                 print("dropAllAboveThisLineOne()::Destroy:"+column+","+line)
             board[index(column,line)].destroy()
             board[index(column,line)]=null;
@@ -538,7 +542,7 @@ function dropAllAboveThisLineOne(line) {
     for(var row=line-1; row>=0; row--) {
         for(column = 0; column < maxColumn; column++) {
             if(board[index(column,row)] !== null && board[index(column,row)] !== undefined) {
-                if(debug)
+                if(valuesObject.debug)
                     print("dropAllAboveThisLineOne()::move "+column+","+row+" down 1 row")
                 board[index(column,row+1)] = board[index(column,row)];
                 positionObject(board[index(column,row)], column, row+1)
@@ -550,7 +554,8 @@ function dropAllAboveThisLineOne(line) {
 
 // Move the current piece x columns
 function moveX(columns) {
-    if(debug)
+    fx.blip.play()
+    if(valuesObject.debug)
         print("moveX()::columns:"+columns)
     if(columns>1)
         moveX(columns-1)
@@ -563,7 +568,7 @@ function moveX(columns) {
 }
 
 function softDrop(rows) {
-    if(debug)
+    if(valuesObject.debug)
         print("softDrop()::rows:"+rows)
     while(moveY(rows--)) {
         softDropScore();
@@ -571,7 +576,8 @@ function softDrop(rows) {
 }
 
 function hardDrop() {
-    if(debug)
+    fx.fastdrop.play()
+    if(valuesObject.debug)
         print("hardDrop()")
     while(moveY(1)) {
         hardDropScore();
@@ -583,7 +589,7 @@ function hardDrop() {
 function moveY(rows) {
     if(rows<=0)
         return false
-    if(debug)
+    if(valuesObject.debug)
         print("moveY()::rows:"+rows)
     if(detectCollision(valuesObject.currentPiece.column, valuesObject.currentPiece.row+rows))
         return false;
@@ -594,7 +600,8 @@ function moveY(rows) {
 }
 
 function storeCurrent() {
-    if(debug)
+    fx.laser.play()
+    if(valuesObject.debug)
         print("storeCurrent()::storredAPiece:"+storredAPiece)
     if(storredAPiece)
         return;
@@ -614,13 +621,15 @@ function storeCurrent() {
 
 function gameOver() {
     print("Game Over")
+    fx.shutdown.play()
     valuesObject.gameOver = true;
 }
 
 // Rotates the current block 90° CW
 function rotateCW() {
-    if(debug)
+    if(valuesObject.debug)
         print("Rotate CW")
+    fx.turn.play()
     var oldRotation = valuesObject.currentPiece.rotation
     if(valuesObject.currentPiece.rotation===3)
         valuesObject.currentPiece.rotation = 0
@@ -644,28 +653,28 @@ function rotateCW() {
     if(detectCollision()) {
         // Checking for possible SideKicks
         if(!valuesObject.currentPiece.sideKickTop && valuesObject.currentPiece.row<1 && !detectCollision(valuesObject.currentPiece.column,valuesObject.currentPiece.row+1)) {
-            if(debug)
+            if(valuesObject.debug)
                 print("Top Side Kick")
             valuesObject.currentPiece.sideKickTop = true
             valuesObject.currentPiece.row++
             return;
         }
         if(!valuesObject.currentPiece.sideKickLeft && !detectCollision(valuesObject.currentPiece.column+1,valuesObject.currentPiece.row)) {
-            if(debug)
+            if(valuesObject.debug)
                 print("Left Side Kick")
             valuesObject.currentPiece.sideKickLeft = true
             valuesObject.currentPiece.column++
             return;
         }
         if(!valuesObject.currentPiece.sideKickRight && !detectCollision(valuesObject.currentPiece.column-1,valuesObject.currentPiece.row)) {
-            if(debug)
+            if(valuesObject.debug)
                 print("Right Side Kick")
             valuesObject.currentPiece.sideKickRight = true
             valuesObject.currentPiece.column--
             return;
         }
         // No SideKick possible
-        if(debug)
+        if(valuesObject.debug)
             print("Rotation is stoped")
         valuesObject.currentPiece.rotation = oldRotation;
     }
@@ -674,14 +683,16 @@ function rotateCW() {
 // Do we have a line in one of the rows supplied? Saves time not looking though the all
 // It returns the found ones. Best to supply an unique ordered list
 function haveALineIn(rows) {
-    if(debug)
+    if(valuesObject.debug)
         print("haveALineIn()::rows:"+rows)
     var lines = new Array;
     while(true) {
         var row = rows.shift()
         if(row === undefined)
             break;
-        print("try: " + row)
+
+        if(valuesObject.debug)
+            print("try: " + row)
         var haveALine = true;
         for(var column = 0; column < maxColumn; column++) {
             if(board[index(column, row)] === undefined || board[index(column, row)] === null) {
@@ -704,7 +715,7 @@ var baseScore = {
 }
 
 function checkLevel() {
-    if(debug)
+    if(valuesObject.debug)
         print("checkLevel()::startingLevel:"+valuesObject.startingLevel)
     if(valuesObject.level<valuesObject.startingLevel) {
         valuesObject.level = valuesObject.startingLevel;
@@ -714,51 +725,51 @@ function checkLevel() {
         valuesObject.level++
         setDeltaTime();
     }
-    if(debug)
+    if(valuesObject.debug)
         print("checkLevel()::level:"+valuesObject.level)
 }
 
 // Set time it takes to lower the piece
 function setDeltaTime() {
-    if(debug)
+    if(valuesObject.debug)
         print("setDeltaTime()")
     valuesObject.deltaTime = 1000 - valuesObject.level*100 + Math.pow(valuesObject.level,2)*2.3;
-    if(debug)
+    if(valuesObject.debug)
         print("setDeltaTime():valuesObject.deltaTime")
 }
 
 function addToScore(amount) {
-    if(debug)
+    if(valuesObject.debug)
         print("addToScore():"+amount)
     valuesObject.score += amount;
-    if(debug)
+    if(valuesObject.debug)
         print("addToScore()::Total"+valuesObject.score)
 }
 
 function addToCombo(amount) {
-    if(debug)
+    if(valuesObject.debug)
         print("addToCombo():"+amount)
     valuesObject.comboScore += amount;
-    if(debug)
+    if(valuesObject.debug)
         print("addToCombo()::Total"+valuesObject.comboScore)
 }
 
 function addComboToScore() {
-    if(debug)
+    if(valuesObject.debug)
         print("addComboToScore()")
     valuesObject.score += valuesObject.comboScore*3/4;
-    if(debug)
+    if(valuesObject.debug)
         print("addComboToScore()::Total"+valuesObject.score)
 }
 
 function resetCombo() {
-    if(debug)
+    if(valuesObject.debug)
         print("resetCombo()")
     valuesObject.comboScore = 0;
 }
 
 function earnedPoints(lines) {
-    if(debug)
+    if(valuesObject.debug)
         print("earnPoints()::lines:"+lines)
     var amount
     switch(lines) {
@@ -781,13 +792,13 @@ function earnedPoints(lines) {
 }
 
 function softDropScore() {
-    if(debug)
+    if(valuesObject.debug)
         print("softDropScore()")
     addToScore(1)
 }
 
 function hardDropScore() {
-    if(debug)
+    if(valuesObject.debug)
         print("hardDropScore()")
     addToScore(2)
 }
