@@ -4,7 +4,7 @@ import Ubuntu.Components.ListItems 1.0 as ListItem
 import "../logic/game.js" as Game
 
 Page {
-    signal init
+    property bool initiated: false
     Column {
         spacing: units.gu(2)
         anchors.right: parent.right
@@ -12,7 +12,7 @@ Page {
         anchors.top: parent.top
         anchors.margins: units.gu(2)
         ListItem.Header {
-            text: i18n.tr("Begin level:")
+            text: i18n.tr("Begin level")
         }
         TextField {
             id: startingLevel
@@ -27,9 +27,10 @@ Page {
             target: values
             property: "startingLevel"
             value: parseInt(startingLevel.text)?parseInt(startingLevel.text):1
+            when: initiated
         }
         ListItem.Header {
-            text: i18n.tr("Drop sensitivity:")
+            text: i18n.tr("Drop sensitivity")
         }
         Slider {
             id: sensitivity
@@ -59,6 +60,53 @@ Page {
             target: values
             property: "debug"
             value: debug.checked
+            when: initiated
+        }
+        ListItem.Header {
+            text: i18n.tr("Music Volume")
+        }
+        Slider {
+            id: music
+            anchors {
+                left: parent.left; right: parent.right
+            }
+            live: false
+            minimumValue: 0
+            maximumValue: 10
+        }
+        Binding {
+            target: values
+            property: "musicVolume"
+            value: music.value
+            when: initiated
+        }
+        ListItem.Header {
+            text: i18n.tr("Fx Volume")
+        }
+        Slider {
+            id: fx
+            anchors {
+                left: parent.left; right: parent.right
+            }
+            live: false
+            minimumValue: 0
+            maximumValue: 10
+        }
+        Binding {
+            target: values
+            property: "fxVolume"
+            value: fx.value
+            when: initiated
+        }
+    }
+    Connections {
+        target: values
+        onInitiatedChanged: {
+            sensitivity.value = values.sensitivity
+            debug.checked = values.debug
+            music.value = values.musicVolume
+            fx.value = values.fxVolume
+            initiated = true
         }
     }
 }

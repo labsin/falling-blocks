@@ -3,6 +3,8 @@ import U1db 1.0 as U1db
 
 Item {
     property QtObject highScores: highScores
+    property QtObject volumes: volumes
+    property QtObject settings: setttings
     property QtObject db: mainDb
     property variant highScore
 
@@ -28,6 +30,40 @@ Item {
             else {
                 highScore = emptyScore()
             }
+        }
+    }
+    U1db.Document {
+        id: volumes
+        database: mainDb
+        docId: 'volumes'
+        create: true
+        defaults: { "fx": 5, "music": 7 }
+    }
+    U1db.Document {
+        id: setttings
+        database: mainDb
+        docId: 'settings'
+        create: true
+        defaults: { "dropsens": 5 }
+    }
+
+    Connections {
+        target: values
+        onMusicVolumeChanged: {
+            var tempContents = volumes.contents
+            tempContents["music"] = values.musicVolume
+            volumes.contents = tempContents
+        }
+        onFxVolumeChanged: {
+            var tempContents = volumes.contents
+            tempContents["fx"] = values.fxVolume
+            volumes.contents = tempContents
+
+        }
+        onSensitivityChanged: {
+            var tempContents = settings.contents
+            tempContents["dropsens"] = values.sensitivity
+            settings.contents = tempContents
         }
     }
 

@@ -3,6 +3,8 @@
 // To share values with the whole program
 var valuesObject;
 
+var fx;
+
 function createQMLObject(component, caller, params) {
     if(valuesObject.debug)
         print("createQMLObject")
@@ -468,6 +470,13 @@ function processLines(lines) {
         for(var jjj=0; jjj < nLines; jjj++){
             removeLine(lines[jjj])
         }
+        if(nLines==4) {
+            fx.clear4.play()
+        }
+        else {
+            fx.clear1.play()
+        }
+
         earnedPoints(nLines);
     }
     else {
@@ -723,6 +732,7 @@ function checkLevel() {
     }
     if(valuesObject.lines >= (10*(valuesObject.level-valuesObject.startingLevel+1) + 5*Math.pow(valuesObject.level-valuesObject.startingLevel,2))) {
         valuesObject.level++
+        fx.powerup.play()
         setDeltaTime();
     }
     if(valuesObject.debug)

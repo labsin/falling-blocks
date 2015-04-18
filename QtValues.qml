@@ -19,6 +19,8 @@ QtObject {
     property int comboScore: 0
     property int highscore: 0
     property bool nowHighscore: highscore < score
+    property int musicVolume
+    property int fxVolume
 
     property int startingLevel: 1
     property int sensitivity: 5
@@ -79,6 +81,30 @@ QtObject {
         level = 0
         deltaTime = 1000
         highscore = mainDbObj.highScore.score
+        {
+            var tempContents = mainDbObj.volumes.contents
+            if(typeof tempContents["music"] != "undefined") {
+                musicVolume = tempContents["music"]
+            }
+            else {
+                musicVolume = 7
+            }
+            if(typeof tempContents["fx"] != "undefined") {
+                fxVolume = tempContents["fx"]
+            }
+            else {
+                fxVolume = 5
+            }
+        }
+        {
+            var tempContents = mainDbObj.settings.contents
+            if(typeof tempContents["dropsens"] != "undefined") {
+                sensitivity = tempContents["dropsens"]
+            }
+            else {
+                sensitivity = 5
+            }
+        }
         initiated = true
     }
 }

@@ -28,6 +28,79 @@ MainView {
         }
     }
 
+    property var musicFiles: ["01.mp3", "02.mp3", "03.mp3"]
+
+    Audio {
+        id: soundtrack
+        autoPlay: true
+        property int current: Math.floor((Math.random() * musicFiles.length) + 1);
+        onCurrentChanged: if(current> musicFiles.length) current = 1
+        source: "music/"+musicFiles[current-1]
+        onStatusChanged: {
+            if(status == Audio.EndOfMedia) {
+                current+=1
+            }
+        }
+        volume: values.musicVolume/10
+    }
+    Item {
+        id: fx
+
+        property var clear4: SoundEffect {
+            id: clear4Fx
+            source: "fx/clear.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var clear1: SoundEffect {
+            id: clear1Fx
+            source: "fx/clear1.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var alert: SoundEffect {
+            id: alertFx
+            source: "fx/alert.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var fastdrop: SoundEffect {
+            id: fastDropFx
+            source: "fx/fastdrop.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var laser: SoundEffect {
+            id: laserFx
+            source: "fx/laser.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var powerup: SoundEffect {
+            id: powerUpFx
+            source: "fx/powerup.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var shutdown: SoundEffect {
+            id: shutdownFx
+            source: "fx/shutdown.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var turn: SoundEffect {
+            id: turnFx
+            source: "fx/turn.wav"
+            volume: values.fxVolume/10
+        }
+
+        property var blip: SoundEffect {
+            id: turn2Fx
+            source: "fx/blip.wav"
+            volume: values.fxVolume/10
+        }
+    }
+
     Connections {
         target: mainDbObj
         onHighScoreChanged: {
@@ -70,6 +143,11 @@ MainView {
             }
 
         }
+        onCurrentPageChanged: {
+            if(currentPage!=1 && values.running==true) {
+                values.paused = true;
+            }
+        }
 
         SettingPage {
             id: settingPage
@@ -90,6 +168,7 @@ MainView {
     Component.onCompleted: {
 
         Game.valuesObject = values;
+        Game.fx = fx
 
         gamePage.init()
 
