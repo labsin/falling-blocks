@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-18 20:04+0200\n"
+"POT-Creation-Date: 2015-10-18 15:49+0200\n"
 "PO-Revision-Date: 2013-11-29 20:34+0100\n"
 "Last-Translator: Sam Segers <sam.sgrs@gmail.com>\n"
 "Language-Team: Nederlands <>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: gui/BlocksPage.qml:179 fallingBlocks.qml:154
+#: gui/BlocksPage.qml:179 fallingBlocks.qml:153
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -95,11 +95,11 @@ msgstr "Muziekvolume"
 msgid "Fx Volume"
 msgstr "Fx Volume"
 
-#: fallingBlocks.qml:126
+#: fallingBlocks.qml:125
 msgid "FallingBlocks"
 msgstr "VallendeBlokken"
 
-#: fallingBlocks.qml:133
+#: fallingBlocks.qml:132
 msgid "Highscores"
 msgstr "Highscores"
 

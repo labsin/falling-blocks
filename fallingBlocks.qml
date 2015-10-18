@@ -1,6 +1,6 @@
-import QtQuick 2.2
-import Ubuntu.Components 1.1
-import QtMultimedia 5.0
+import QtQuick 2.4
+import Ubuntu.Components 1.2
+import QtMultimedia 5.4
 import "gui"
 import "logic/game.js" as Game
 
@@ -17,7 +17,6 @@ MainView {
     applicationName: "com.ubuntu.developer.labsin.fallingblocks"
 
     automaticOrientation: false
-    useDeprecatedToolbar: false
 
     QtValues {
         id: values

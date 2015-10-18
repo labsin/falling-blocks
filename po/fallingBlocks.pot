@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-18 20:37+0200\n"
+"POT-Creation-Date: 2015-10-18 15:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gui/BlocksPage.qml:179 fallingBlocks.qml:154
+#: gui/BlocksPage.qml:179 fallingBlocks.qml:153
 msgid "Settings"
 msgstr ""
 
@@ -93,10 +93,10 @@ msgstr ""
 msgid "Fx Volume"
 msgstr ""
 
-#: fallingBlocks.qml:126
+#: fallingBlocks.qml:125
 msgid "FallingBlocks"
 msgstr ""
 
-#: fallingBlocks.qml:133
+#: fallingBlocks.qml:132
 msgid "Highscores"
 msgstr ""

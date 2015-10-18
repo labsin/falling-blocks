@@ -1,5 +1,5 @@
-import QtQuick 2.2
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import "../logic/game.js" as Game
 import "blocksPageHelper.js" as Helper
 
@@ -30,9 +30,10 @@ Item {
 
         Button {
             id: startButton
-            text: "Start"
+            text: values.started?"Stop":"Start"
             anchors.horizontalCenter: parent.horizontalCenter
             width: values.blockSize * 4 + Helper.spacing
+            color: values.started?UbuntuColors.red:UbuntuColors.green
             onClicked: {
                 if(values.started) {
                     Game.gameOver()
@@ -41,27 +42,28 @@ Item {
                     Game.startNewGame()
                 }
             }
-            Binding {
-                target: startButton
-                property: "text"
-                value: values.started?"Stop":"Start"
-            }
+//            Binding {
+//                target: startButton
+//                property: "text"
+//                value: values.started?"Stop":"Start"
+//            }
         }
 
         Button {
             id: pauseButton
             enabled: values.started
-            text: "Pause"
+            text: values.paused?"Resume":"Pause"
             anchors.horizontalCenter: parent.horizontalCenter
             width: values.blockSize * 4 + Helper.spacing
             onClicked: {
                 values.paused = !values.paused
             }
-            Binding {
-                target: pauseButton
-                property: "text"
-                value: values.paused?"Resume":"Pause"
-            }
+//            Binding {
+//                target: pauseButton
+//                property: "text"
+//                value: values.paused?"Resume":"Pause"
+//            }
+            color: !values.started?"black":(values.paused?UbuntuColors.lightAubergine:UbuntuColors.darkAubergine)
         }
 
         Item {

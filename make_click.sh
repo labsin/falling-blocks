@@ -5,17 +5,17 @@ NAME="fallingBlocks"
 rm -rf $BUILDDIR
 cp -r $FROMDIR $BUILDDIR
 echo "Entering ${BUILDDIR}"
-cd $BUILDDIR
+pushd $BUILDDIR
 rm -rf .git* .bzr* debian desktop ${NAME}.qmlp* \
 ${NAME}128.png ${NAME}16.png ${NAME}32.png \
 ${NAME}64.png make_click.sh README.md LICENSE
-cd po
+pushd po
 echo "Generating mo files"
 ./generate_mo.sh
-cd ..
+popd
 rm -r po
-cd ..
+pushd ../
 echo "Build click package in `pwd`"
 click build $BUILDDIR
-cd $FROMDIR
-
+popd
+popd
